@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Design tokens
+   Every colour, size and timing value used across the site lives here.
+   ========================================================================== */
+
+:root {
+  /* Brand colours */
+  --color-navy: #102c43;
+  --color-navy-deep: #0a2237;
+  --color-navy-soft: #17364d;
+  --color-yellow: #ffd92f;
+  --color-accent: #fde047; /* eyebrows, active nav link, ticks */
+
+  /* Semantic colours (switched in dark mode) */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #333333;
+  --color-heading: #0a2237;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+
+  /* Borders and shadows */
+  --border-card: #dfe3e7;
+  --radius: 4px;
+  --shadow-sm: 0 1px 4px rgba(10, 34, 55, 0.08);
+  --shadow-card: 0 8px 24px rgba(16, 44, 67, 0.07);
+  --shadow-card-hover: 0 12px 28px rgba(16, 44, 67, 0.1);
+
+  /* Layout */
+  --container-width: 1120px;
+  --navbar-height: 72px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* reveals, hero */
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1); /* hover transitions */
+
+  color-scheme: light;
+}
+
+/* Dark mode: follows the OS setting, or [data-theme="dark"] on <html> */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0d1b28;
+    --color-surface: #13283a;
+    --color-text: #d6dde4;
+    --color-heading: #ffffff;
+    --color-muted: #9aa7b4;
+    --color-line: #243b4f;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0d1b28;
+  --color-surface: #13283a;
+  --color-text: #d6dde4;
+  --color-heading: #ffffff;
+  --color-muted: #9aa7b4;
+  --color-line: #243b4f;
+  color-scheme: dark;
+}

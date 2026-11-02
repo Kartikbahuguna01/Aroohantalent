@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Buttons
+   Usage: <a class="btn btn--primary">  or  <a class="btn btn--outline">
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border: 1px solid var(--color-yellow);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font: 500 14px/24px "Inter", sans-serif;
+  transition:
+    transform 0.5s var(--ease-soft),
+    box-shadow 0.55s var(--ease-soft),
+    background-color 0.45s var(--ease-soft),
+    color 0.45s var(--ease-soft),
+    border-color 0.45s var(--ease-soft);
+}
+
+.btn--primary {
+  background: var(--color-yellow);
+  color: var(--color-navy-deep);
+}
+
+.btn--outline {
+  background: transparent;
+  color: #ffffff;
+}
+
+/* ---------- Hover and press feedback ---------- */
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn--primary:hover {
+    box-shadow: 0 8px 20px rgba(255, 217, 47, 0.35);
+  }
+
+  .btn--outline:hover {
+    background: rgba(255, 217, 47, 0.14);
+  }
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.97);
+  transition-duration: 0.15s;
+}
+
+/* ---------- Light sweep on primary call-to-action buttons ---------- */
+
+.btn--primary:not(.navbar__cta) {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary:not(.navbar__cta)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  pointer-events: none;
+  transform: skewX(-20deg);
+  transition: left 1s var(--ease-soft);
+}
+
+.btn--primary:not(.navbar__cta):hover::after {
+  left: 130%;
+}

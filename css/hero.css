@@ -1,0 +1,296 @@
+/* ==========================================================================
+   Heroes and the call-to-action band
+   - .hero       : full-screen homepage hero
+   - .page-hero  : shorter hero used on the inner pages
+   - .cta-band   : closing band on Services and Industries
+   ========================================================================== */
+
+/* Full-bleed background photo shared by all three */
+.bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-navy-deep);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ---------- Homepage hero ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  overflow: hidden;
+  background: var(--color-navy-deep);
+  color: #ffffff;
+}
+
+.hero__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 96px;
+  align-items: center;
+  width: 100%;
+  padding: 64px 24px;
+}
+
+.hero__content {
+  min-width: 0; /* lets long headings shrink inside the grid column */
+}
+
+.hero__tag {
+  color: var(--color-yellow);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+}
+
+.hero h1 {
+  max-width: 680px;
+  margin: 16px 0 32px;
+  font-size: clamp(34px, 5vw, 60px);
+  font-weight: 300;
+  line-height: 1.12;
+}
+
+.hero h1 em {
+  color: var(--color-yellow);
+  font-style: normal;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Reviewer avatars and star rating ---------- */
+
+.social-proof {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  font-size: 12px;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatars img {
+  display: block;
+  width: 36px;
+  height: 36px;
+  margin-right: -10px;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.rating__stars {
+  display: block;
+  color: var(--color-yellow);
+  font-size: 16px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* ---------- Frosted-glass service panel ----------
+   Glass needs something to blur, so soft yellow and blue light sits behind
+   the panel (.hero::before). The panel then adds: a translucent white
+   gradient, a bright edge, a top-left sheen and a deep soft shadow. */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(253, 224, 71, 0.32), transparent 22%),
+    radial-gradient(circle at 94% 74%, rgba(96, 165, 250, 0.34), transparent 26%),
+    radial-gradient(circle at 66% 82%, rgba(255, 255, 255, 0.14), transparent 20%);
+  pointer-events: none;
+}
+
+.glass-panel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  justify-self: end;
+  overflow: hidden;
+  padding: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.12),
+    0 24px 48px rgba(3, 12, 24, 0.45);
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+}
+
+/* Glossy reflection across the top-left corner */
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.32), transparent 38%);
+  pointer-events: none;
+}
+
+.glass-panel > * {
+  position: relative;
+}
+
+.glass-panel__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px;
+}
+
+.glass-panel__item + .glass-panel__item {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-panel__item img {
+  flex: none;
+  width: 48px;
+  height: 48px;
+}
+
+.glass-panel__item b {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.glass-panel__item span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  line-height: 20px;
+}
+
+/* ---------- Inner-page hero ---------- */
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0 80px;
+  background: var(--color-navy-deep);
+  color: #ffffff;
+}
+
+.page-hero::after,
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 34, 55, 0.6);
+}
+
+.page-hero .container,
+.cta-band .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero h1 {
+  max-width: 640px;
+  margin: 8px 0 16px;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.page-hero h1 em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.page-hero p {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Title variants */
+.page-hero__title--wide {
+  max-width: none;
+}
+
+.page-hero__title--long {
+  max-width: 760px;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.3;
+}
+
+/* ---------- Call-to-action band ---------- */
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+  background: var(--color-navy-deep);
+  color: #ffffff;
+  text-align: center;
+}
+
+.cta-band h2 {
+  max-width: none;
+  margin: 8px auto 16px;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 48px;
+}
+
+.cta-band p {
+  max-width: 640px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media (max-width: 960px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-hero {
+    padding: 64px 0;
+  }
+
+  .cta-band h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}

@@ -1,0 +1,165 @@
+/* ==========================================================================
+   Navbar (sticky, white, identical on every page)
+   ========================================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid #eceff2;
+  transition: box-shadow 0.5s var(--ease-soft);
+}
+
+/* Added by js/main.js once the page has been scrolled */
+.navbar.is-scrolled {
+  box-shadow: 0 6px 24px rgba(16, 44, 67, 0.08);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: var(--navbar-height);
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #4b5563;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.navbar__brand img {
+  width: 40px;
+  height: auto;
+}
+
+/* ---------- Links ---------- */
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 8px 0;
+  color: #444444;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: color 0.45s var(--ease-soft);
+}
+
+/* Sliding underline on hover */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.55s var(--ease-soft);
+}
+
+.nav-links a:not(.is-active):hover {
+  color: var(--color-navy);
+}
+
+.nav-links a:not(.is-active):hover::after {
+  transform: scaleX(1);
+}
+
+.nav-links a.is-active {
+  color: var(--color-accent);
+  box-shadow: inset 0 -2px 0 var(--color-accent);
+}
+
+.nav-links a.is-active::after {
+  display: none;
+}
+
+/* "Contact Us" inside the mobile menu (desktop uses .navbar__cta) */
+.nav-links__mobile-cta {
+  display: none;
+}
+
+.navbar__cta {
+  flex: none;
+  height: 40px;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.navbar__toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  background: none;
+  border: 1px solid #d5dbe1;
+  border-radius: var(--radius);
+  color: var(--color-navy-deep);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* ---------- Tablet and mobile: links collapse into a drop-down ---------- */
+
+@media (max-width: 960px) {
+  .navbar__brand {
+    font-size: 16px;
+  }
+
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: var(--navbar-height);
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 8px 24px 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #eceff2;
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .nav-links .nav-links__mobile-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    background: var(--color-yellow);
+    border-radius: var(--radius);
+    color: #000000;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Split info panel: photo on the left, details on the right
+   Used for "What's included" (Hire Talent) and the contact details box.
+   ========================================================================== */
+
+.info-split {
+  display: grid;
+  grid-template-columns: 41% 1fr;
+  margin-top: 80px;
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+}
+
+.info-split--contact {
+  margin-top: 64px;
+}
+
+/* ---------- Left: photo, brand and headline ---------- */
+
+.info-split__media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 560px;
+  padding: 48px 36px;
+  overflow: hidden;
+  background: var(--color-navy-deep);
+  color: #ffffff;
+}
+
+.info-split__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 34, 55, 0.38);
+}
+
+.info-split__media > * {
+  position: relative;
+  z-index: 1;
+}
+
+.info-split__media > .bg-image {
+  position: absolute;
+  z-index: 0;
+}
+
+.info-split__brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.info-split__brand img {
+  width: 48px;
+  height: 48px;
+}
+
+.info-split__brand small {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  opacity: 0.75;
+}
+
+.info-split__media > h3,
+.info-split__headline {
+  margin: auto 0;
+}
+
+.info-split__media h3 {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 36px;
+}
+
+.info-split__headline p {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* ---------- Right: checklist ---------- */
+
+.info-split__list {
+  display: grid;
+  gap: 40px;
+  align-content: center;
+  margin: 0;
+  padding: 48px 40px;
+  background: var(--color-surface);
+  list-style: none;
+}
+
+.info-split__list li {
+  display: flex;
+  gap: 16px;
+  color: #444444;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.info-split__list li::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 24px;
+  background: url("../assets/images/check.svg") no-repeat center;
+}
+
+/* ---------- Right: contact details ---------- */
+
+.info-split__details {
+  display: grid;
+  gap: 40px;
+  align-content: center;
+  padding: 48px;
+  background: var(--color-surface);
+}
+
+.info-split__details h4 {
+  margin-bottom: 16px;
+  color: var(--color-heading);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--color-muted);
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.contact-row + .contact-row {
+  margin-top: 8px;
+}
+
+.contact-row svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+}
+
+@media (min-width: 901px) {
+  .info-split--contact {
+    grid-template-columns: 46% 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .info-split {
+    grid-template-columns: 1fr;
+  }
+
+  .info-split__media {
+    min-height: 320px;
+    padding: 32px 24px;
+  }
+
+  .info-split__list,
+  .info-split__details {
+    padding: 32px 24px;
+  }
+
+  .info-split__list {
+    gap: 24px;
+  }
+
+  .contact-row {
+    font-size: 16px;
+  }
+}
